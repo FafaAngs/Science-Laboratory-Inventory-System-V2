@@ -47,7 +47,7 @@ public class FirstHomePage {
 	public void StartFirstHomePage() {
 		
 	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        frame.setSize(1920,1080 );
+	        frame.setSize(1400, 800);
 	        frame.setLocationRelativeTo(null);
 
 	        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/resources/sciencelab7.jpg"));

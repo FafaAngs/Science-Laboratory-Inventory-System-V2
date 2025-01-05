@@ -30,7 +30,7 @@ public class LabDashBoard {
     	    
     	    JPanel panel = new JPanel();
     	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    	    frame.setSize(1920,1080 );
+    	    frame.setSize(1400, 800);
     	    frame.setLocationRelativeTo(null);
     	    
     	    panel.setLayout(new BorderLayout());
@@ -222,6 +222,12 @@ public class LabDashBoard {
     	                                        }
     	                                        borrowedItemsList.setListData(listnamesList.toArray(new String[0])); //refresh
     	                                        JOptionPane.showMessageDialog(returnDialog, "Item returned successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+    	                                        quantityField.setText("");  // <-- This clears the text field
+    	                                     // Check if no items are left to return, and close the dialog if empty
+    	                                        if (listnamesList.isEmpty()) {
+    	                                           
+    	                                            returnDialog.dispose();  // Close the dialog if there are no items left to return
+    	                                        }
     	                                        break;
     	                                    }
     	                                }

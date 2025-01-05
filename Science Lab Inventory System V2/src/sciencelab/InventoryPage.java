@@ -39,7 +39,7 @@ public class InventoryPage {
       
 panel.setBackground(Color.orange.darker());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1920,1080 );
+        frame.setSize(1400, 800);
         frame.setLocationRelativeTo(null);
         panel.setLayout(new BorderLayout());
 
@@ -267,7 +267,7 @@ String[] newData = {userInformation.FirstName.get(userIndex).toUpperCase()+" "+u
                leftNameLabel.setFont(serifFont);
            
                Image img = icon.getImage();
-               BufferedImage resizedImg = new BufferedImage(145,145, BufferedImage.TYPE_INT_ARGB); 
+               BufferedImage resizedImg = new BufferedImage(100,100, BufferedImage.TYPE_INT_ARGB); 
                Graphics2D g2d = resizedImg.createGraphics();
                g2d.setColor(Color.orange.darker());
                g2d.fillRect(0, 0, resizedImg.getWidth(), resizedImg.getHeight()); 
@@ -295,7 +295,6 @@ String[] newData = {userInformation.FirstName.get(userIndex).toUpperCase()+" "+u
         	JLabel rightNameLabel = new JLabel(); 
         	if(i==1) {
         		icon = new ImageIcon(getClass().getResource("/resources/salt.png"));;
-        		icon = new ImageIcon("salt.png");
         		 rightNameLabel = new JLabel("         Salt");
               	
               }
@@ -323,7 +322,7 @@ String[] newData = {userInformation.FirstName.get(userIndex).toUpperCase()+" "+u
                rightNameLabel.setFont(serifFont);
             
             Image img = icon.getImage();
-            BufferedImage resizedImg = new BufferedImage(145, 145, BufferedImage.TYPE_INT_ARGB); 
+            BufferedImage resizedImg = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB); 
             Graphics2D g2d = resizedImg.createGraphics();
             g2d.setColor(Color.orange.darker()); 
             g2d.fillRect(0, 0, resizedImg.getWidth(), resizedImg.getHeight()); 

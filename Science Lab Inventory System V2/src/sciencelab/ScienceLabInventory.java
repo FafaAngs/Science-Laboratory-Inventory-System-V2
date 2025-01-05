@@ -20,7 +20,7 @@ public class ScienceLabInventory {
 //homePage.ShowGUI();
      //creationPage.createAndShowGUI();
   
- //inventoryPage.StartInventoryPage();
+//inventoryPage.StartInventoryPage();
     	//scienceLabItems.saveToJson();
 //labDashBoard.StartDashBoard();
     	

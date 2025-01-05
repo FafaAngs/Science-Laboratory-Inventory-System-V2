@@ -39,7 +39,7 @@ public class AdminPanel {
     	
     	JFrame frame = new JFrame("Science Laboratory Inventory System");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1920,1080 );
+        frame.setSize(1400, 800);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
 
@@ -195,7 +195,7 @@ public class AdminPanel {
         table.setFont(font);
         JScrollPane scrollPane = new JScrollPane(table);
         historyPanel.add(scrollPane, BorderLayout.CENTER);
-        scrollPane.setPreferredSize(new Dimension(1800, 900));
+        scrollPane.setPreferredSize(new Dimension(1200, 500));
         JOptionPane.showMessageDialog(null, historyPanel, "Logs", JOptionPane.PLAIN_MESSAGE);
     }
 
@@ -263,7 +263,7 @@ public class AdminPanel {
         Font font = new Font(Font.MONOSPACED, Font.PLAIN, 16);
         table.setFont(font);
         JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setPreferredSize(new Dimension(1800, 900));
+        scrollPane.setPreferredSize(new Dimension(1200, 500));
         registeredUsersPanel.add(scrollPane, BorderLayout.CENTER);
         JOptionPane.showMessageDialog(null, registeredUsersPanel, "Registered Users", JOptionPane.PLAIN_MESSAGE);
     }
@@ -478,7 +478,7 @@ if (materialFound) {
             scienceLabItems.loadFromJson();
             JLabel leftLabel = new JLabel("Item Name:" + inventoryPage.equipmentNames[i] + " Stocks Left: " + scienceLabItems.equipments[i]);
             leftLabel.setFont(new Font("Arial", Font.BOLD, 16));
-            leftLabel.setBorder(BorderFactory.createEmptyBorder(0, 200, 10, 0)); 
+            leftLabel.setBorder(BorderFactory.createEmptyBorder(0, 500, 10, 0)); 
             leftLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
             leftPanel.add(leftLabel);
         }
@@ -489,7 +489,7 @@ if (materialFound) {
             scienceLabItems.loadFromJson();
              JLabel rightLabel = new JLabel("Item Name:" + inventoryPage.materialNames[i] + " Stocks Left: " + scienceLabItems.materials[i]);
              rightLabel.setFont(new Font("Arial", Font.BOLD, 16));
-             rightLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 200)); 
+             rightLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 500)); 
              rightLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
              rightPanel.add(rightLabel);
          }
