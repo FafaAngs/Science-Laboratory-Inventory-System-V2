@@ -140,7 +140,7 @@ String[] newData = {userInformation.FirstName.get(userIndex).toUpperCase()+" "+u
                String[] newData = {userInformation.FirstName.get(userIndex).toUpperCase()+" "+userInformation.LastName.get(userIndex).toUpperCase(),userInformation.IDNumber.get(userIndex), equipmentNames[i],"-"+Integer.toString(equipmentTaken),formattedDateTime};
                adminPanel.addData(newData);                  		
                adminPanel.saveDataToJson();
-            // Add equipment name and quantity as strings to the lists
+            
                
                
             

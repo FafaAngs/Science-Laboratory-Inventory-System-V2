@@ -191,15 +191,6 @@ public class CreationPage {
         });
 
 
-
-
-        
-        
-     
-
-        
-    
-  
         GridBagConstraints gbcSignInButton = new GridBagConstraints();
         gbcSignInButton.gridx = 1;
         gbcSignInButton.gridy = 6;

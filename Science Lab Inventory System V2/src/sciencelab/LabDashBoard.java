@@ -1,5 +1,6 @@
 package sciencelab;
 import java.awt.*;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -42,6 +43,8 @@ public class LabDashBoard {
     	    label.setBackground(Color.orange.darker());
     	    label.setOpaque(true); 
     	    label.setHorizontalAlignment(SwingConstants.CENTER);
+    	    
+    	    
     	    
     	    JButton logout = new JButton("LOGOUT");
     	    Font buttonFont = new Font("Roboto", Font.BOLD, 18);
@@ -102,6 +105,108 @@ public class LabDashBoard {
     	    userLiveTime.setOpaque(true); 
     	    userLiveTime.setPreferredSize(new Dimension(100, 100));
     	    userLiveTime.setBackground(Color.orange.darker());
+    	    
+    	    
+    	    
+    	    
+    	    JLabel containerLabel = new JLabel();
+            containerLabel.setLayout(new FlowLayout()); 
+            containerLabel.setPreferredSize(new Dimension(200, 50)); 
+
+            JButton changePasswordButton = new JButton("Change Password");
+            Font changePassButtonFont = new Font("Roboto", Font.BOLD, 12);
+            changePasswordButton.setForeground(Color.black.brighter());
+            changePasswordButton.setFont(changePassButtonFont);
+            changePasswordButton.setPreferredSize(new Dimension(150, 50)); 
+            changePasswordButton.setBackground(Color.orange);
+
+            changePasswordButton.addActionListener(e -> {
+       
+                JPasswordField oldPassword = new JPasswordField();
+                JPasswordField newPassword = new JPasswordField();
+
+           
+                JCheckBox showPasswordCheckBox = new JCheckBox("Show Password");
+
+              
+                showPasswordCheckBox.addActionListener(event -> {
+                    if (showPasswordCheckBox.isSelected()) {
+                 
+                        oldPassword.setEchoChar((char) 0);
+                        newPassword.setEchoChar((char) 0);
+                    } else {
+              
+                        oldPassword.setEchoChar('*');
+                        newPassword.setEchoChar('*');
+                    }
+                });
+
+        
+                Object[] fields = {
+                    "Old Password:", oldPassword, 
+                    "New Password:", newPassword,
+                    showPasswordCheckBox
+                };
+
+               
+                ImageIcon customIcon =new ImageIcon(getClass().getResource("/resources/changepassimg.png"));
+                Image image1 = customIcon.getImage();
+                Image resizedImage = image1.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+                customIcon = new ImageIcon(resizedImage);
+
+
+       
+                if (JOptionPane.showConfirmDialog(null, fields, "Change Password", JOptionPane.OK_CANCEL_OPTION, 
+                    JOptionPane.PLAIN_MESSAGE, customIcon) == JOptionPane.OK_OPTION) {
+                	
+                	
+                	String oldPass = new String(oldPassword.getPassword());
+                	String newPass = new String(newPassword.getPassword());
+
+                	String currentUserPass = userInformation.Password.get(userIndex);
+                	
+                	if (oldPass.isEmpty() || newPass.isEmpty()) {
+                
+                	    Toolkit.getDefaultToolkit().beep();
+                	    
+                	    JOptionPane.showMessageDialog(null, "Both fields cannot be empty.", "Error", JOptionPane.ERROR_MESSAGE);
+                	} else if (oldPass.equals(currentUserPass)) {
+                
+                	    userInformation.Password.set(userIndex, newPass);
+                	    userInformation.saveToJson();
+                	 
+                	    JOptionPane.showMessageDialog(null, "Password changed successfully.", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
+
+                	  
+                	    userInformation.loadFromJson();
+                	    String user = userInformation.Email.get(userIndex);  
+                	    String userPass = userInformation.Password.get(userIndex);
+
+                	    
+                	    userInformation.loginAccount(user, userPass, null);
+                	    
+
+                	
+                	    JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent)e.getSource());
+                	    topFrame.dispose();
+
+       
+                	} else {
+                	  
+                	    Toolkit.getDefaultToolkit().beep();
+                	    
+                	    
+                	    JOptionPane.showMessageDialog(null, "The old password is incorrect. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+                	}
+                }
+            });
+            
+            
+
+
+    	    containerLabel.add(changePasswordButton);
+
+
     	    
     	    
     	    
@@ -289,11 +394,17 @@ public class LabDashBoard {
     	    
     	    contentPane.add(returnitems,gbc);
     	    contentPane.add(proceed, gbc);
+    	   
 
     	    JPanel userDetails = new JPanel();
     	    userDetails.setLayout(new BorderLayout());
     	    userDetails.setBackground(new Color(64, 64, 64, 128).darker().darker().darker());
     	    userDetails.setPreferredSize(new Dimension(450, 200)); 
+    	    containerLabel.setBorder(BorderFactory.createEmptyBorder(220, 0, 0, 0)); 
+    	    userDetails.add(containerLabel, BorderLayout.WEST);
+
+
+    	
 
     	    JPanel userBorrowHistory = new JPanel();
     	    userBorrowHistory.setLayout(new BorderLayout());
@@ -302,8 +413,11 @@ public class LabDashBoard {
 
     	    userDetails.add(userWelcome, BorderLayout.NORTH);
     	    userDetails.add(userLiveTime, BorderLayout.SOUTH);
+    	   
     	    userBorrowHistory.add(userHistory, BorderLayout.NORTH);
 
+    	    
+    	    
     	    innerPanel.add(userDetails, BorderLayout.WEST);
     	    innerPanel.add(userBorrowHistory, BorderLayout.EAST);
     	    innerPanel.add(contentPane, BorderLayout.CENTER);
